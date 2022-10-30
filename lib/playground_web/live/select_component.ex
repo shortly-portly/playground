@@ -17,7 +17,8 @@ defmodule PlaygroundWeb.SelectComponent do
         <%= for {id, label} <- @options do %>
         <p class="text-red-500 hover:cursor-pointer hover:text-blue-500"
           phx-click={JS.push("selected", value: %{id: id, label: label}, target: @myself) 
-          |> toggle(assigns.id)} >
+          |> toggle(assigns.id)} 
+          phx-click-away={toggle(assigns.id)} >
           <%= label %>
         </p>
         <% end %>
