@@ -23,6 +23,9 @@ defmodule PlaygroundWeb.SimpleForm do
       <.text_input form={f} field={:name} label_text={"Hope" } />
       <.text_input form={f} field={:age } />
       <.checkbox field={{f, :agree}} />
+      <.live_component module={PlaygroundWeb.SelectComponent} id="my-select" field={{f, :foobar}} options={@options}/>
+
+      <%= select(f, :role, ["Admin": "admin", "User": "user"]) %>
       <.submit_btn />
     </.form>
     """

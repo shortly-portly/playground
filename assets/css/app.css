@@ -5,6 +5,27 @@
 /* This file is for your main application CSS */
 
 /* Alerts and form errors used by phx.new */
+@layer components {
+    .header {
+        @apply font-semibold text-gray-800 text-center text-4xl;
+    }
+    .sub-header {
+        @apply font-semibold text-indigo-500 text-2xl;
+    }
+    .sub-header-2 {
+        @apply text-xl py-3;
+    }
+    .label {
+        @apply uppercase font-semibold mb-1 text-sm;
+    }
+    .input {
+        @apply bg-white w-full pl-2 pt-2 pb-2 border border-gray-400 rounded;
+    }
+    .submit {
+        @apply text-indigo-700 pt-2 text-2xl font-semibold border-indigo-500 border-2 p-2 rounded-md;
+    }
+}
+
 .alert {
   padding: 15px;
   margin-bottom: 20px;
@@ -35,7 +56,6 @@
 .invalid-feedback {
   color: #a94442;
   display: block;
-  margin: -1rem 0 2rem;
 }
 
 /* LiveView specific classes for your customization */

@@ -1,7 +1,6 @@
 defmodule MyComponents do
   use Phoenix.Component
 
-  alias PlaygroundWeb.ErrorHelpers
   import Phoenix.HTML.Form
   import PlaygroundWeb.ErrorHelpers
 
@@ -29,9 +28,9 @@ defmodule MyComponents do
     ~H"""
     <div class="px-3 mb-4 mt-4 flex-grid">
       <%= if @label == true do %>
-        <%= label(@form, @field, set_label(assigns)) %>
+        <%= label(@form, @field, set_label(assigns), class: "label") %>
       <% end %>
-      <%= text_input(@form, @field) %>
+      <%= text_input(@form, @field, class: "bg-white w-full pl-2 pt-2 pb-2 border border-gray-400 rounded") %>
       <%= error_tag(@form, @field) %>
     </div>
     """
