@@ -4,6 +4,8 @@ defmodule MyComponents do
   import Phoenix.HTML.Form
   import PlaygroundWeb.ErrorHelpers
 
+  alias Phoenix.LiveView.JS
+
   @doc """
   Returns a text input component. 
 
@@ -24,13 +26,14 @@ defmodule MyComponents do
   attr :label_text, :string, default: nil
 
   def text_input(assigns) do
-
     ~H"""
     <div class="px-3 mb-4 mt-4 flex-grid">
       <%= if @label == true do %>
         <%= label(@form, @field, set_label(assigns), class: "label") %>
       <% end %>
-      <%= text_input(@form, @field, class: "bg-white w-full pl-2 pt-2 pb-2 border border-gray-400 rounded") %>
+      <%= text_input(@form, @field,
+        class: "bg-white w-full pl-2 pt-2 pb-2 border border-gray-400 rounded"
+      ) %>
       <%= error_tag(@form, @field) %>
     </div>
     """
@@ -47,7 +50,6 @@ defmodule MyComponents do
   attr :text, :string, default: "Submit"
 
   def submit_btn(assigns) do
-
     ~H"""
     <div class="px-3 mb-8 mt-8 md:mb-0 flex-grid">
       <button class="submit" type="submit">
@@ -67,6 +69,21 @@ defmodule MyComponents do
       <%= label(@form, @field) %>
       <%= hidden_input(@form, @field) %>
       <%= text_input(@form, @field, type: "checkbox") %>
+    </div>
+    """
+  end
+
+  def sidebar(assigns) do
+    ~H"""
+    <div id="left" class="sidebar">
+      <ul>
+        <li><a href="#">Wibble</a></li>
+        <li><a href="#">Wibble</a></li>
+        <li><a href="#">Wibble</a></li>
+        <li><a href="#">Wibble</a></li>
+        <li><a href="#">Wibble</a></li>
+        <li><a href="#">boo</a></li>
+      </ul>
     </div>
     """
   end
@@ -104,12 +121,17 @@ defmodule MyComponents do
     assigns = assign_new(assigns, :alt_text, fn -> assigns.header_text end)
 
     ~H"""
-    <div class="flex items-center justify-between">
-      <div>
-        <div class="header"><%= @header_text %></div>
+    <div class="flex flex-col">
+      <div class="flex flex-row justify-between">
+        <div>
+          <div class="header"><%= @header_text %></div>
+        </div>
+        <div>
+          <img src={@image} alt={@alt_text} class="w-40 h-40" />
+        </div>
       </div>
-      <div>
-        <img src={@image} alt={@alt_text} class="w-40 h-40" />
+      <div class="p-2">
+        <button type="button" id="hide">Menu</button>
       </div>
     </div>
     """
